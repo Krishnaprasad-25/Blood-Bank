@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS bloodbank;
+USE bloodbank;
+DROP TABLE IF EXISTS donors;
+
+CREATE TABLE donors (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  donorName VARCHAR(100) NOT NULL,
+  age INT NOT NULL,
+  gender VARCHAR(10) NOT NULL,
+  contact VARCHAR(20) NOT NULL,
+  branch VARCHAR(50) NOT NULL,
+  blood VARCHAR(5) NOT NULL
+);
+select * from donors

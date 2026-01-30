@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blood Bank Management System</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #bb0c90, #ff4d4d);
+      background-size: 400% 400%;
+      animation: gradientBG 8s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen p-6 pb-20">
+
+<!-- ================= HOME / WELCOME PAGE ================= -->
+<div id="homePage" class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-10 text-center">
+  <h1 class="text-4xl font-bold text-red-600 mb-4">
+    🩸kp's Blood Bank 
+  </h1>
+
+  <p class="text-gray-700 text-lg mb-6">
+    Blood donation is a voluntary procedure that can help save lives.
+    Every drop of blood is precious and can make a difference for patients
+    in need of emergency care, surgeries, and treatments.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-4 mb-8">
+    <div class="bg-red-100 p-4 rounded">
+      <h3 class="font-bold text-red-600">Save Lives</h3>
+      <p class="text-sm">One donation can save up to 3 lives</p>
+    </div>
+    <div class="bg-blue-100 p-4 rounded">
+      <h3 class="font-bold text-blue-600">Easy Management</h3>
+      <p class="text-sm">Maintain donor records securely</p>
+    </div>
+    <div class="bg-green-100 p-4 rounded">
+      <h3 class="font-bold text-green-600">Quick Search</h3>
+      <p class="text-sm">Find donors by blood group & branch</p>
+    </div>
+  </div>
+
+ <button
+  type="button"
+  onclick="enterDashboard()"
+  class="bg-red-500 text-white px-8 py-3 rounded">
+  Click to Register
+</button>
+
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboard" class="hidden max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-6">
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-red-600">Blood Bank Management</h1>
+    <button onclick="clearAll()" class="bg-black hover:bg-red-500 text-white px-4 py-2 rounded">
+      Clear All
+    </button>
+  </div>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-red-100 p-4 rounded text-center">
+      <h3> <span id="donorCount">0</span></h3>
+      <p>Total Donors</p>
+    </div>
+    <div class="bg-blue-100 p-4 rounded text-center">
+      <h3 class="text-xl font-bold">Blood Bank</h3>
+      <p>Professional System</p>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <form id="bloodForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input id="serial" type="number" placeholder="Donor ID" class="border p-2 rounded" required>
+    <input id="name" type="text" placeholder="Donor Name" class="border p-2 rounded" required>
+    <input id="age" type="number" placeholder="Age" class="border p-2 rounded" required>
+
+    <select id="gender" class="border p-2 rounded" required>
+      <option value="">Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+
+    <input id="contact" type="text" placeholder="Contact" class="border p-2 rounded" required>
+    <input id="branch" type="text" placeholder="Branch" class="border p-2 rounded" required>
+
+    <select id="bloodGroup" class="border p-2 rounded" required>
+      <option value="">Blood Group</option>
+      <option>A+</option><option>A-</option>
+      <option>B+</option><option>B-</option>
+      <option>AB+</option><option>AB-</option>
+      <option>O+</option><option>O-</option>
+    </select>
+
+   <button
+  type="submit"
+  class="md:col-span-3 bg-red-500 text-white p-3 rounded hover:bg-red-600">
+  Add Donor
+</button>
+
+  </form>
+
+  <!-- SEARCH -->
+  <input
+    id="search"
+    type="text"
+    placeholder="Search by Name, Blood Group or Branch"
+    class="mt-6 w-full border p-2 rounded"
+  >
+
+  <!-- TABLE -->
+  <div class="overflow-x-auto mt-4">
+    <table class="w-full border text-center">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border p-2">ID</th>
+          <th class="border p-2">Name</th>
+          <th class="border p-2">Age</th>
+          <th class="border p-2">Gender</th>
+          <th class="border p-2">Contact</th>
+          <th class="border p-2">Branch</th>
+          <th class="border p-2">Blood</th>
+          <th class="border p-2">Action</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-md border-t">
+  <div class="text-center py-2 text-sm">
+    © 2026 Blood Bank System | Developed by <b>Krishna</b>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
